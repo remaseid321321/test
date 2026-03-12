@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Recipes - Healthy Saudi Cuisine</title>
+   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        background-color: #fcfbf9;
+        background-image: repeating-linear-gradient(
+            135deg,
+            rgba(0,0,0,0.015) 0,
+            rgba(0,0,0,0.015) 1px,
+            transparent 1px,
+            transparent 40px
+        );
+        min-height: 100%;
+    }
+
+    body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        color: #1f2624;
+        line-height: 1.6;
+        background: transparent;
+    }
+
+    .main-header {
+        background-color: #2f7d6d;
+        background-image: linear-gradient(to right, #2f7d6d, #256559);
+        color: #fff;
+        padding: 12px 5%;
+        display: flex;
+        justify-content: space-between; 
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo-area {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .logo-area h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.8rem;
+        color: #fff;
+        margin: 0;
+        letter-spacing: 0.5px;
+    }
+
+    .logo-area .tagline {
+        font-size: 0.75rem;
+        opacity: 0.8;
+        font-style: italic;
+        display: block;
+        margin-top: -5px;
+        color: #e0e0e0;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    nav a[href*="add-recipe"] {
+        background-color: #fcfbf9;
+        color: #2f7d6d !important;
+        font-weight: 600;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    nav a[href*="add-recipe"]:hover {
+        background-color: #ffffff;
+        transform: translateY(-2px);
+    }
+
+    .container, main, .user-page {
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 30px;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    h2, h3 {
+        font-family: 'Playfair Display', serif;
+        color: #2f7d6d;
+        margin-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-size: 0.9rem;
+    }
+
+    table th {
+        background-color: #f8faf9;
+        color: #2f7d6d;
+        padding: 15px;
+        border-bottom: 2px solid #2f7d6d;
+        text-align: center;
+    }
+
+    table td {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    table img {
+        border-radius: 8px;
+        object-fit: cover;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .submit-btn, .secondary-btn, button {
+        background-color: #2f7d6d;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .submit-btn:hover {
+        background-color: #256559;
+    }
+
+    .main-footer {
+        background-color: #2f7d6d;
+        color: white;
+        text-align: center;
+        padding: 40px 20px;
+        margin-top: 60px;
+    }
+
+    .main-footer p {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        margin: 5px 0;
+    }
+
+    a {
+        color: #2f7d6d;
+        text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+        .main-header {
+            flex-direction: column;
+            gap: 15px;
+            text-align: center;
+        }
+        nav {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+    }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden; 
+}
+
+table th {
+    background-color: #f8faf9; 
+    color: #2f7d6d;
+    padding: 15px;
+    border-bottom: 2px solid #2f7d6d;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    text-align: center;
+}
+
+table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    vertical-align: middle;
+    color: #444;
+}
+
+table tr:hover {
+    background-color: #fcfbf9; 
+}
+
+table img {
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 80px; 
+    height: 80px;
+}
+
+label {
+    display: block;
+    margin-top: 20px;
+    font-weight: 600;
+    color: #2f7d6d;
+    margin-bottom: 8px;
+}
+
+input[type="text"], 
+input[type="url"], 
+input[type="email"], 
+input[type="password"], 
+select, 
+textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #333;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #2f7d6d;
+    box-shadow: 0 0 0 3px rgba(47, 125, 109, 0.1); 
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.submit-btn, button[type="submit"] {
+    background-color: #2f7d6d;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 30px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #256559;
+    transform: translateY(-1px);
+}
+
+.secondary-btn, button[type="button"] {
+    background-color: #f0f4f3;
+    color: #2f7d6d;
+    border: 1px solid #2f7d6d;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.secondary-btn:hover {
+    background-color: #2f7d6d;
+    color: white;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eee;
+    margin: 30px 0;
+}
+       .sign-out {
+    background-color: #e74c3c !important; 
+    color: white !important;
+    padding: 8px 15px !important;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.sign-out:hover {
+    background-color: #c0392b !important;
+    transform: scale(1.05);
+}
+   .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-area img {
+    width: 45px;   
+    height: auto;
+}    
+</style>
+</head>
+<body>
+
+<header class="main-header">
+
+    <div class="logo-area">
+        <img src="photo/logo.jpeg" alt="Logo">
+        <div>
+            <h1>من دارنا</h1>
+            <span class="tagline">Healthy Saudi Cuisine</span>
+        </div>
+    </div>
+
+    <nav>
+        <a href="user.html">Home</a>
+        <a href="my-recipes.html">My Recipes</a>
+        <a href="add-recipe.html" class="add-recipe-btn">Add Recipe</a>
+        <a href="index.html" class="sign-out">Sign Out</a>
+    </nav>
+
+</header>
+<div class="container">
+    <h2>My Recipes</h2>
+    
+    <div style="text-align: right; margin-bottom: 15px;">
+        <a href="add-recipe.html" class="add-btn">+ Add New Recipe</a>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Recipe</th> 
+                    <th>Ingredients</th> 
+                    <th>Instructions</th> 
+                    <th>Video</th> 
+                    <th>Total Likes</th> 
+                    <th>Edit</th> 
+                    <th>Delete</th> 
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    <td>
+                        <a href="view-recipe.html">
+                            <img src="photo/jareesh.jpg" alt="oat jareesh">
+                            <b>Oat Jareesh</b>
+                        </a>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>2 cups of Steel-cut Oats</li>
+                            <li>1 liter of Low-fat Greek Yogurt.</li>
+                            <li>500g Chicken breast (cubed)</li>
+                            <li>1 Onion (chopped).</li>
+                            <li>Spices: Cumin, Salt, and Black lemon.</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ol>
+                            <li>Sauté onions and chicken until golden.</li>
+                            <li>Add oats and water, then simmer on low heat for 40 minutes.</li>
+                            <li>Stir in the Greek yogurt and cumin</li>
+                            <li>Mash the mixture until smooth and top with caramelized onions.</li>
+                        </ol>
+                    </td>
+                    <td>
+                        <a href="https://www.tiktok.com/@joharh_/video/7210876805094378753?lang=ar" target="_blank" style="color:#00f; text-decoration: underline;">Watch Video</a>
+                    </td>
+                    <td style="text-align: center;">250</td>
+                    <td style="text-align: center;"><a href="edit-recipe.html">✏️ edit</a></td>
+                    <td style="text-align: center;"><a href="my-recipes.html" style="color:red;">🗑️ delete</a></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a href="view-recipe2.html">
+                            <img src="photo/saleeq.webp" alt="Light Taifi Saleeg">
+                            <b>Light Taifi Saleeg</b>
+                        </a>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>2 cups of Egyptian Rice (washed well).</li>
+                            <li>Whole chicken (skinless).</li>
+                            <li>3 cups of Low-fat Milk.</li>
+                            <li>Mastic and Cardamom.</li>
+                            <li>A pinch of salt.</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ol>
+                            <li>Boil the chicken with spices.</li>
+                            <li>Cook the rice in the broth until soft.</li>
+                            <li>Add the milk and stir until creamy.</li>
+                            <li>Roast the chicken in an air fryer.</li>
+                        </ol>
+                    </td>
+                    <td>
+                        <a href="https://www.tiktok.com/@healthy_meal/video/7508828350979280145" target="_blank" style="color:#00f; text-decoration: underline;">Watch Video</a>
+                    </td>
+                    <td style="text-align: center;">185</td>
+                    <td style="text-align: center;"><a href="edit-recipe.html">✏️ edit</a></td>
+                    <td style="text-align: center;"><a href="my-recipes.html" style="color:red;">🗑️ delete</a></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <a href="view-recipe3.html">
+                            <img src="photo/dates.jpeg" alt="date energy balls">
+                            <b>Date Energy Balls</b>
+                        </a>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>250g Pressed Dates</li>
+                            <li>1 cup of Toasted Oats.</li>
+                            <li>1/2 cup of Crushed Walnuts or Almonds.</li>
+                            <li>1 tbsp of Cinnamon and Cardamom.</li>
+                            <li>Sesame seeds for coating</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ol>
+                            <li>Mix the dates with the toasted oats and spices in a large bowl.</li>
+                            <li>Knead the mixture until it becomes a cohesive dough.</li>
+                            <li>Form the dough into small, bite-sized balls.</li>
+                            <li>Roll the balls in sesame seeds or crushed pistachios for a crunchy finish.</li>
+                        </ol>
+                    </td>
+                    <td>
+                        <a href="https://www.tiktok.com/@nahoola.s/video/7322159445994114322?lang=ar" target="_blank" style="color:#00f; text-decoration: underline;">Watch Video</a>
+                    </td>
+                    <td style="text-align: center;">320</td>
+                    <td style="text-align: center;"><a href="edit-recipe.html">✏️ edit</a></td>
+                    <td style="text-align: center;"><a href="my-recipes.html" style="color:red;">🗑️ delete</a></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<footer class="main-footer">
+    <div class="footer-content">
+        <p>© 2026 Min Darna – Healthy Saudi Cuisine</p>
+        <p>Inspired by Saudi home kitchens with a healthy twist 🌿</p>
+    </div>
+</footer>
+</body>
+</html>
+
+
+
+
+
+
+
+

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard - Min Darna</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+        background-color: #fcfbf9;
+        background-image: repeating-linear-gradient(135deg, rgba(0,0,0,0.015) 0, rgba(0,0,0,0.015) 1px, transparent 1px, transparent 40px);
+        min-height: 100%;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        color: #1f2624;
+        line-height: 1.6;
+    }
+
+    .main-header {
+        background-color: #2f7d6d;
+        background-image: linear-gradient(to right, #2f7d6d, #256559);
+        color: #fff;
+        padding: 12px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo-area { display: flex; align-items: center; gap: 12px; }
+    .logo-icon { font-size: 2rem; }
+    .logo-area h1 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #fff; margin: 0; }
+    .logo-area .tagline { font-size: 0.75rem; opacity: 0.9; font-style: italic; color: #e0e0e0; display: block; margin-top: -5px; }
+
+    nav { display: flex; align-items: center; gap: 10px; }
+    nav a { color: #fff; text-decoration: none; font-weight: 500; font-size: 0.9rem; padding: 8px 15px; border-radius: 6px; transition: 0.3s; }
+    nav a:hover:not(.add-recipe-btn) { background: rgba(255, 255, 255, 0.1); }
+
+    .add-recipe-btn { background-color: #fcfbf9 !important; color: #2f7d6d !important; font-weight: 700 !important; }
+    
+    .sign-out { color: #ffadad !important; font-weight: 600; }
+    .sign-out:hover { background: rgba(255, 0, 0, 0.1) !important; }
+
+    section {
+        max-width: 1000px;
+        margin: 30px auto;
+        padding: 25px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    h2, h3 { font-family: 'Playfair Display', serif; color: #2f7d6d; margin-bottom: 15px; }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 15px; background: white; }
+    table th { background-color: #f8faf9; color: #2f7d6d; padding: 12px; border-bottom: 2px solid #2f7d6d; text-align: left; }
+    table td { padding: 12px; border-bottom: 1px solid #eee; vertical-align: middle; }
+    
+    table img { border-radius: 50%; object-fit: cover; margin-right: 10px; vertical-align: middle; }
+
+    .admin-actions-form { display: flex; flex-direction: column; gap: 8px; }
+    .radio-group { display: flex; flex-direction: column; gap: 5px; }
+    .radio-option { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; cursor: pointer; }
+    input[type="radio"] { accent-color: #2f7d6d; cursor: pointer; }
+
+    .apply-btn {
+        background-color: #2f7d6d;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 0.8rem;
+        transition: 0.3s;
+    }
+    .apply-btn:hover { background-color: #256559; }
+
+    .main-footer {
+        background-color: #2f7d6d;
+        color: white;
+        text-align: center;
+        padding: 30px 20px;
+        margin-top: 50px;
+    }
+    .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-area img {
+    width: 45px;  
+    height: auto;
+}
+  </style>
+</head>
+<body>
+
+<header class="main-header">
+
+    <div class="logo-area">
+        <img src="photo/logo.jpeg" alt="Logo">
+        <div>
+            <h1>من دارنا</h1>
+            <span class="tagline">Healthy Saudi Cuisine</span>
+        </div>
+    </div>
+
+    <nav>
+        <a href="user.html">Home</a>
+        <a href="my-recipes.html">My Recipes</a>
+        <a href="add-recipe.html" class="add-recipe-btn">Add Recipe</a>
+        <a href="index.html" class="sign-out">Sign Out</a>
+    </nav>
+
+</header>
+
+<section>
+    <h2>Welcome, <span id="userFirstName">Admin</span></h2>
+  <h2>Admin Dashboard</h2>
+  <div style="background: #f8faf9; padding: 15px; border-radius: 8px; border-left: 4px solid #2f7d6d;">
+      <p><strong>Name:</strong> Lama Salem</p>
+      <p><strong>Email:</strong> Lama@healthyrecipes.com</p>
+  </div>
+</section>
+
+<section>
+  <h3>Pending Recipe Reports</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Recipe</th>
+        <th>Recipe Creator</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="view-recipe.html" style="font-weight:600;"jareesh</a></td>
+        <td>
+          <img src="photo/user.jpg" width="40" height="40" alt="User">
+          Sarah Ahmed
+        </td>
+        <td>
+          <form action="admin.html" class="admin-actions-form">
+            <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="action" value="block" required> Block User
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="action" value="dismiss"> Dismiss Report
+                </label>
+            </div>
+            <button type="submit" class="apply-btn">Submit Action</button>
+          </form>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h3>Blocked Users</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John Ali</td>
+        <td>john@email.com</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<footer class="main-footer">
+    <div class="footer-content">
+        <p>© 2026 Min Darna – Healthy Saudi Cuisine</p>
+        <p>Inspired by Saudi home kitchens with a healthy twist 🌿</p>
+    </div>
+</footer>
+
+<script>
+    window.onload = function() {
+        const firstName = localStorage.getItem('firstName');
+        if (firstName) {
+            document.getElementById('userFirstName').textContent = firstName;
+        }
+    };
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
